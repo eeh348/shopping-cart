@@ -1,6 +1,7 @@
 # shopping_cart.py
 
 from pprint import pprint
+import datetime
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -28,52 +29,68 @@ products = [
 #print(products)
 #pprint(products)
 
-#breakpoint()
+#define variables
 
-my_list = []
+product_ids = []
+total_price = 0
+user_input = '' #string
+now = datetime.datetime.now()
+tax_usd = 0
+
+#define functions
+def to_usd(price):
+    price_usd = "${:,.2f}".format(price)
+    return price_usd
 
 #Capture Inputs
-
-user_input = ''
 
 while user_input is not "DONE":
     #ask user for product
     user_input = input("Please input a product identifier:")
-    
-    if user_input == "DONE":
-            print(my_list)
+
+    if user_input == "DONE": 
             break
-    else:
-        my_list.append(user_input)
-
+    else: #user_input in products["id"]:
+        product_ids.append(user_input)
     
+print(product_ids)
 
-    #validate product and add to list
-    #if user_input in products["id"]:
-        #int(user_input)
-    #else:
-        #print("Invalid input")
+#print inputs
 
+print("---------------------------------")
+print("GREEN FOODS GROCERY")
+print("WWW.GREEN-FOODS-GROCERY.COM")
+print("---------------------------------")
+print("CHECKOUT AT: " + str(now.strftime("%Y-%m-%d %H:%M %p")))
+print("---------------------------------")
+print("SELECTED PRODCUTS:")
 
-#Validate inputs
+#print selected products
 
+for i in product_ids:
+    matching_product = [p for p in products if str(p["id"]) == str(i)]
+    matching_product = matching_product[0]
+    price_usd = to_usd(matching_product["price"])   #convert price to USD
+    total_price = total_price + matching_product["price"]
+    print("... " + matching_product["name"] + " (" + str(price_usd) + ")")
 
+#define tax and sub total
 
-#def user_input(product):
+tax_usd = total_price * 0.0874
+sub_usd = total_price + tax_usd
+tax_usd = to_usd(tax_usd)
+sub_usd = to_usd(sub_usd)
+total_price = to_usd(total_price)
 
+#print subtotals
 
-#add validation to check to make sure product is in list
-#if user_input not in my_list:
-    #my_list.append(my_list)
-#print(my_list)
+print("---------------------------------")
+print("SUBTOTAL: " + str(total_price))
+print("TAX: " + str(tax_usd))
+print("TOTAL: " + str(sub_usd))
+print("---------------------------------")
+print("THANKS, SEE YOU AGAIN SOON")
+print("---------------------------------")
 
-#if user_input = "DONE":
-#print("---------------------------------")
-#print("GREEN FOODS GROCERY")
-#print("WWW.GREEN-FOODS-GROCERY.COM")
-#print("---------------------------------")
-#print("CHECKOUT AT:", #input time function)
-#print("---------------------------------")
-#print("SELECTED PRODCUTS:")
     
     
