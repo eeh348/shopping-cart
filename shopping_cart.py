@@ -26,7 +26,9 @@ products = [
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
 #print(products)
-# pprint(products)
+#pprint(products)
+
+#breakpoint()
 
 my_list = []
 
@@ -34,18 +36,23 @@ my_list = []
 
 user_input = ''
 
-x = 1
-while user_input != "DONE":
+while user_input is not "DONE":
     #ask user for product
     user_input = input("Please input a product identifier:")
+    
+    if user_input == "DONE":
+            print(my_list)
+            break
+    else:
+        my_list.append(user_input)
+
+    
 
     #validate product and add to list
-    if user_input in products["id"]:
-        my_list.append(user_input)
-    elif user_input == "DONE":
-        print(my_list)
-    else:
-        print("Invalid input")
+    #if user_input in products["id"]:
+        #int(user_input)
+    #else:
+        #print("Invalid input")
 
 
 #Validate inputs
