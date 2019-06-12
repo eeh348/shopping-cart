@@ -1,6 +1,6 @@
 # shopping_cart.py
 
-#from pprint import pprint
+from pprint import pprint
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -25,7 +25,48 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-print(products)
+#print(products)
 # pprint(products)
 
-# TODO: write some Python code here to produce the desired output
+my_list = []
+
+#Capture Inputs
+
+user_input = ''
+
+x = 1
+while user_input != "DONE":
+    #ask user for product
+    user_input = input("Please input a product identifier:")
+
+    #validate product and add to list
+    if user_input in products["id"]:
+        my_list.append(user_input)
+    elif user_input == "DONE":
+        print(my_list)
+    else:
+        print("Invalid input")
+
+
+#Validate inputs
+
+
+
+#def user_input(product):
+
+
+#add validation to check to make sure product is in list
+#if user_input not in my_list:
+    #my_list.append(my_list)
+#print(my_list)
+
+#if user_input = "DONE":
+#print("---------------------------------")
+#print("GREEN FOODS GROCERY")
+#print("WWW.GREEN-FOODS-GROCERY.COM")
+#print("---------------------------------")
+#print("CHECKOUT AT:", #input time function)
+#print("---------------------------------")
+#print("SELECTED PRODCUTS:")
+    
+    
