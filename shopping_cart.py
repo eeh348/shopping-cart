@@ -43,38 +43,32 @@ def to_usd(price):
     price_usd = "${:,.2f}".format(price)
     return price_usd
 
-#define valid inputs
+#Define valid inputs
 
 prod = []
 valid_prod = set
 
 for p in products:
-    #print (p["id"])
     if p["id"] not in prod:
         prod.append(p["id"])
 
-    valid_prod = set(prod)
-
-print(valid_prod)
+    valid_prod = str(set(prod))
 
 #Capture Inputs
 
 while user_input is not "DONE":
     #ask user for product
     user_input = input("Please input a product identifier:")
-    #validate input
 
-    if user_input not in valid_prod:
-        print("Invalid input... Please input")
+    #validate input
+    if user_input in valid_prod:
+        product_ids.append(user_input) 
     elif user_input == "DONE":
         break
-    else:
-        product_ids.append(user_input)        
-
-    #if user_input == "DONE": 
-            #break
-    #else: #user_input in products["id"]:
-        #product_ids.append(user_input)
+    elif user_input == "LIST":
+        print(valid_prod)
+    else:   
+        print(user_input + " is an invalid product code. Please input valid product code. When complete, type DONE. For list of product codes type LIST")
     
 print(product_ids)
 
