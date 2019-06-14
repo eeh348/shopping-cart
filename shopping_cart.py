@@ -37,29 +37,52 @@ user_input = '' #string
 now = datetime.datetime.now()
 tax_usd = 0
 
+
 #define functions
 def to_usd(price):
     price_usd = "${:,.2f}".format(price)
     return price_usd
+
+#define valid inputs
+
+prod = []
+valid_prod = set
+
+for p in products:
+    #print (p["id"])
+    if p["id"] not in prod:
+        prod.append(p["id"])
+
+    valid_prod = set(prod)
+
+print(valid_prod)
 
 #Capture Inputs
 
 while user_input is not "DONE":
     #ask user for product
     user_input = input("Please input a product identifier:")
+    #validate input
 
-    if user_input == "DONE": 
-            break
-    else: #user_input in products["id"]:
-        product_ids.append(user_input)
+    if user_input not in valid_prod:
+        print("Invalid input... Please input")
+    elif user_input == "DONE":
+        break
+    else:
+        product_ids.append(user_input)        
+
+    #if user_input == "DONE": 
+            #break
+    #else: #user_input in products["id"]:
+        #product_ids.append(user_input)
     
 print(product_ids)
 
 #print inputs
 
 print("---------------------------------")
-print("GREEN FOODS GROCERY")
-print("WWW.GREEN-FOODS-GROCERY.COM")
+print("THE NEW STORE")
+print("WWW.THENEWSTORE.COM")
 print("---------------------------------")
 print("CHECKOUT AT: " + str(now.strftime("%Y-%m-%d %H:%M %p")))
 print("---------------------------------")
