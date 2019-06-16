@@ -11,7 +11,7 @@ from oauth2client.service_account import ServiceAccountCredentials
 # use creds to create a client to interact with the Google Drive API
 scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
-creds = ServiceAccountCredentials.from_json_keyfile_name('shoppingcart-243815-d4ac18c1b8aa.json', scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name('my_cred.json', scope)
 client = gspread.authorize(creds)
 
 # Find a shopping cart worksheet by name and open the first sheet
