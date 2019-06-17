@@ -41,7 +41,7 @@ while user_input is not "DONE":
     #ask user for product
     user_input = input("Please input a product identifier:")
 
-    #validate input and handel errors
+    #validate input and handle errors
     if df['id'].isin([user_input]).any():
         product_ids.append(user_input) 
     elif user_input == "DONE":
