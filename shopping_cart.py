@@ -20,6 +20,8 @@ sheet = client.open("Shopping Cart Project - Products Database").sheet1
 #extract data as list and convert to dataframe
 df = pd.DataFrame(sheet.get_all_values(), columns=['id','name','aisle','department','price'])
 
+breakpoint()
+
 #convert price from object to string
 df["price"]= df["price"].astype(float)
 
@@ -69,7 +71,7 @@ print("SELECTED PRODCUTS:")
 for i in product_ids:
     #matching_product = [p for p in products if str(p["id"]) == str(i)]
     matching_product = str(df.loc[df['id'] == str(i)]['name'].values)
-    matching_product = matching_product.strip("['']")
+        matching_product = matching_product.strip("['']")
     price = float(df.loc[df['id'] == str(i)]['price'])
     price_usd = to_usd(price)  #convert price to USD
     total_price = total_price + price
@@ -91,6 +93,3 @@ print("TOTAL: " + str(sub_usd))
 print("---------------------------------")
 print("THANKS, SEE YOU AGAIN SOON")
 print("---------------------------------")
-
-    
-    
